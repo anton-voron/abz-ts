@@ -1,0 +1,52 @@
+@import "src/styles/vars.sass"
+
+.section1
+    height: 725px
+    background-image: url(../../static/section1/bg-1.jpg)
+    background-size: cover
+    display: flex
+    justify-content: center
+    align-items: center
+    +tablet
+        height: 620px
+    +mobile
+        height: 390px 
+
+    .content-wrapper
+        color: #ffffff
+        max-width: 450px
+        +mobile
+            margin: 0 auto
+            text-align: center
+
+        .title
+            font-family: $overpas
+            font-weight: 600px
+            font-size: 50px
+            line-height: 60px
+            margin-bottom: 30px
+            +mobile
+                font-size: 30px
+                line-height: 36px
+                margin-bottom: 20px
+
+        .p1
+            font-family: $sourcesans
+            font-weight: 400px
+            font-size: 18px
+            line-height: 26px
+            margin-bottom: 45px
+            +mobile
+                font-size: 16px
+                line-height: 22px
+                margin-bottom: 40px
+
+        .sign-up-btn 
+            width: 290px
+            color: #ffffff
+            background-color: $primary
+            border: none
+            padding: 9px
+            border-radius: 4px
+
+            .in-button 

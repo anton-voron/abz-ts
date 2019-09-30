@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Route, Switch } from 'react-router-dom'
 
 import Header from '../Header/Header'
+import Section1 from '../Section1/Section'
 
 
 
@@ -10,7 +11,7 @@ function App () {
     return(
         <main className="">
             <Header />
-            <button className="">Click</button>
+            <Section1 />
         </main>
     )
 }

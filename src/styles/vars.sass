@@ -1,0 +1,57 @@
+// Here you can find and write all global variables and mixins
+//
+// To use these, write `@import "styles/vars"` at the start of your sass file
+
+/* Colors */
+$primary:		#ef6c00
+$secondary:		#283593
+$background:	#ffffff
+
+
+/* Fonts */
+$overpas: 'Overpass', sans-serif
+$sourcesans: 'Source Sans Pro', sans-serif
+
+/* Transition */
+$transition: 		ease
+$tdefault: 			all 240ms $transition
+
+/* Media */
+$desktop: 1140px
+$laptop: 960px
+$tablet: 720px
+$mobile: 540px
+
+/* Mixins */
+=pos($position, $top: auto, $left: auto, $right: auto, $bottom: auto)
+	position: $position
+	top: $top
+	left: $left
+	right: $right
+	bottom: $bottom
+
+=placeholder
+	&::-webkit-input-placeholder
+		@content
+	&::-webkit-placeholder
+		@content
+	&::-ms-input-placeholder
+		@content
+	&::-moz-placeholder
+		@content
+	&::placeholder
+		@content
+
+=toe
+	text-overflow: ellipsis
+	white-space: nowrap
+	overflow: hidden
+
+
+=tablet
+	@media(max-width: 990px)
+		@content
+
+=mobile
+	@media(max-width: 540px)
+		@content
