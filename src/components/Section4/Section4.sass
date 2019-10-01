@@ -1,0 +1,83 @@
+@import "src/styles/vars.sass"
+@import "src/styles/vars.sass"
+
+.section4
+    background-image: url(../../static/section4/bg-2.jpg)
+    background-size: cover
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
+    color: #ffffff
+    height: 756px
+    padding: 140px 0px
+    margin-top: 100px
+    +tablet
+        min-height: 890px
+        padding: 120px 0px
+        background-position: -200px
+    +mobile
+        height: 100%
+        padding-top: 60px
+        background-position-x: -250px
+   
+    
+    .content-wrapper
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        +mobile
+            text-align: center
+
+        .title
+            font-family: $overpas
+            font-weight: 600
+            font-size: 42px
+            line-height: 51px
+            margin-bottom: 40px
+            text-align: center
+            +mobile
+                font-size: 26px
+                line-height: 31px
+                margin-bottom: 25px        
+        
+        .grid-wrapper
+            display: grid
+            grid-template-columns: 1fr 1fr
+            grid-column-gap: 55px
+            align-items: center
+            justify-content: center
+            +mobile
+                grid-template-columns: 1fr
+
+            .box-1
+
+                .section4-p1
+                    font-family: $sourcesans
+                    font-weight: 400
+                    font-size: 16px
+                    line-height: 22px
+            
+            .box-2
+                +mobile
+                    grid-row-start: 1
+                    grid-row-end: 2
+
+                .img-central
+                    margin-bottom: 30px
+
+                    .img1
+                        +tablet
+                            display: none
+                        +mobile
+                            display: block
+                            height: 216px
+                            margin-bottom: 20px
+                    
+                    .img2
+                        display: none
+                        +tablet
+                            display: block
+                        +mobile
+                            display: none
