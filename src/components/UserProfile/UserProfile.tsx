@@ -16,7 +16,7 @@ function UserProfile(props: any) {
     const { img, name, jobPostion, email, tel, id } = props.person as PersonData
 
     return (
-        <div className="box" key={id} id={`${id}`}>
+        <div className="box" id={`${id}`}>
             <div className="box-1">
                 <img src={img} alt="user photo" className="user-photo" />
             </div>

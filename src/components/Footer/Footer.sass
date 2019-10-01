@@ -1,0 +1,87 @@
+@import "src/styles/vars.sass"
+
+.main-footer
+    background-color: $secondary
+    font-family: $sourcesans
+    color: #ffffff
+    font-size: 20px
+    line-height: 44px
+    margin-top: 120px
+    
+    .border-b
+        border-bottom: 1px solid #ffffff
+        padding: 30px 0
+        margin-bottom: 30px
+
+        .top
+            display: flex
+            flex-direction: row
+            justify-content: space-between
+            +mobile
+                flex-direction: column
+                align-items: center
+                text-align: center
+
+            .link-list
+                list-style: none
+                display: flex
+                +mobile
+                    flex-direction: column
+
+                .link-item
+                    margin-right: 25px
+        
+    .midle
+        display: grid
+        grid-template-columns: 1fr 1fr 
+        justify-content: space-between
+        margin-bottom: 30px
+        +mobile
+            grid-template-columns: 1fr
+            align-items: center
+
+        .contacts
+            +mobile
+                margin: 0 auto
+                text-align: center
+            .icon
+                margin-right: 10px
+        
+        .page-links
+            list-style: none
+            display: flex
+            flex-direction: row
+            justify-content: space-between
+            +mobile
+                display: none
+
+            .page-item
+                display: flex
+                flex-direction: column
+                text-align: right
+    
+    .bottom
+        display: flex
+        justify-content: space-between
+        +mobile
+            flex-direction: column-reverse
+            align-items: center
+
+        .copyright
+            font-size: 12px
+
+        .icon-list
+            list-style: none
+            display: flex
+
+            .icon-item
+                margin-right: 20px
+
+
+    a
+        color: #ffffff
+        font-size: 16px
+        line-height: 30px
+
+        
+        

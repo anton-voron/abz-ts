@@ -66,7 +66,7 @@ class Section5 extends Component {
 
     showEmployee = (arr: PersonData[]) => {
         return arr.map((person) => {
-            return <UserProfile person={person}/>    
+            return <UserProfile person={person} key={person.id}/>    
         })
     }
 

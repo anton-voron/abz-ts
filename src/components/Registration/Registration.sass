@@ -1,0 +1,53 @@
+@import "src/styles/vars.sass"
+
+.registration
+    margin-top: 120px
+
+    .title
+        font-family: $overpas
+        font-weight: 600
+        font-size: 42px
+        line-height: 51px
+        text-align: center
+
+    .registration-p1
+        font-family: $sourcesans
+        font-weight: 400
+        font-size: 18px
+        line-height: 26px
+        text-align: center
+        margin-bottom: 45px
+    
+    .form-wrapper
+        display: grid
+        grid-template-columns: repeat(3, 1fr)
+        grid-column-gap: 30px
+        grid-row-gap: 40px
+        justify-content: space-between
+        align-items: center
+
+        .box
+            grid-column-start: 1
+            grid-column-end: 5
+            grid-row-start: 2
+            grid-row-end: 2
+            display: flex
+            flex-direction: row
+            justify-content: space-around
+
+            .selector
+                padding: 15px
+                font-family: $sourcesans
+                font-size: 16px 
+                border-radius: 4px
+                width: 450px
+            
+            .upload-photo
+                background-color: transparent
+                padding: 15px
+                font-family: $sourcesans
+                border: 1px solid #8d8c8c
+                font-size: 16px 
+                border-radius: 4px
+                color: #8d8c8c
+                width: 450px
