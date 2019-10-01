@@ -8,8 +8,12 @@ import './Registration.sass'
 configure({ enforceActions: 'observed' });
 
 interface IForm {
-    [key: string]: string
+    [key: string]: string | number 
 
+}
+
+interface IHeders {
+    [key: string]: string | number
 }
 
 class FormSend {
@@ -19,7 +23,7 @@ class FormSend {
         name: '',
         email: '',
         phone : '',
-        position_id: 'Select your postiton',
+        position_id: 0,
         photo: ''
 
     }
@@ -31,6 +35,7 @@ class FormSend {
 
     @action
     onSelectChange = (value: string): void => {
+        console.log(value)
         this.data.position_id = value
     }
 
@@ -48,33 +53,53 @@ class Registration extends Component {
         onSelectChange(value)
     }
 
-    handleSubmit = (evt: any): void => {
+    getToken = async () => {
+        let token: string
+        const response = await fetch('https://frontend-test-assignment-api.abz.agency/api/v1/token')
+        const data = await response.json()
+        if(data) {
+            console.log(data.token)
+            token = data.token
+        } else {
+            throw new Error
+        }
+        return token
+    }
+
+    handleSubmit = async (evt: any) => {
         evt.preventDefault()
         const postData = document.getElementById('postData')
-        console.log(postData)
-        
-         fetch('https://frontend-test-assignment-api.abz.agency/api/v1/users', {
-             method: 'GET',
-             body: JSON.stringify(store.data),
+        const token = await this.getToken()
+
+        const formData = new FormData();
+
+        const fileField: any = document.querySelector('input[type="file"]')
+        console.log(fileField.files[0]);
+        formData.append('position_id', `${store.data.position_id}`);
+        formData.append('name', `${store.data.name}`);
+        formData.append('email', `${store.data.email}`);
+        formData.append('phone', `${store.data.phone}`);
+        formData.append('photo', fileField.files[0]);
+
+        fetch('https://frontend-test-assignment-api.abz.agency/api/v1/users', {
+             method: 'POST',
+             body: formData,
              headers: {
-                'Token': "token",
+                'Token': token
               },
         })
         .then(response => {
-            console.log(response.json())
             return response.json()
         })
-        .then(data => {
-            console.log(data)
-            if(data.success) {
-                console.log('all good')
-            } else {
-                throw new Error('could not fetch')
-            }
+        .then(result => {
+            console.log(result)
         })
         .catch(error => {
-            console.log(error, error.massage)
-        })
+            console.log(`FUCK we got an error ${error}`)
+        }) 
+        
+        
+        
     }
 
     render() {
@@ -102,12 +127,12 @@ class Registration extends Component {
                             placeholder="+38 ( __ ) ___ __ __" />
                         <div className="box">
                             <select value={data.position_id} onChange={this.handleSelect} className="selector">
-                                <option value="Lead designer">Lead designer</option>
-                                <option value="QA">QA</option>
-                                <option value="SMM">SMM</option>
-                                <option value="Frontend developer">Frontend developer</option>
-                                <option value="Backend developer">Backend developer</option>
-                                <option value="Leading specialist of Control Department">Leading specialist of Control Department</option>
+                                <option value="0">Lead designer</option>
+                                <option value="1">QA</option>
+                                <option value="2">SMM</option>
+                                <option value="3">Frontend developer</option>
+                                <option value="4">Backend developer</option>
+                                <option value="5">Leading specialist of Control Department</option>
                             </select>
                             <div>
                                 <input type="file" placeholder="Upload your photo" className="upload-photo" />
