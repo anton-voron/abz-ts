@@ -14,13 +14,13 @@ class Section2 extends Component {
                         <h2 className="title">
                             Let's get acquainted
                         </h2>
-                        <div className="row">
-                            <div className="col-md-4 col-12">
+                        <div className="grid-wrapper">
+                            <div className="box-1">
                                 <div className="img-central">
                                     <img src={require('../../static/section2/man-mobile.svg')} alt="man with mobile" className="img-responsive mob-size" />
                                 </div>
                             </div>
-                            <div className="col-md-8 col-12">
+                            <div className="box-2">
                                 <h3 className="section2-h3">
                                     I am cool frontend developer
                                 </h3>
