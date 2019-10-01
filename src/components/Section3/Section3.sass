@@ -1,1 +1,61 @@
 @import "src/styles/vars.sass"
+
+.section3
+    padding-top: 100px
+    +mobile
+        padding-top: 60px
+
+    .content-wrapper
+
+        .title
+            text-align: center
+            font-family: $overpas
+            font-weight: 600
+            font-size: 42px
+            line-height: 51px
+            margin-bottom: 50px
+            +mobile
+                font-size: 26px
+
+        .grid-wrapper
+            display: grid
+            grid-template-columns: 1fr 1fr 1fr
+            align-items: center
+            justify-content: center
+            +tablet
+                grid-template-columns: 1fr
+            
+            .code-lang-item
+                margin: 10px
+                display: flex
+                flex-direction: column
+                +tablet
+                    flex-direction: row
+                +mobile
+                    flex-direction: column
+                    align-items: center
+
+                .img-wrapper
+                    margin: 0px
+                        bottom: 30px
+                        right: 30px
+
+                .box-2
+                    +mobile
+                        text-align: center
+
+                    .box-title
+                        font-family: $overpas
+                        font-weight: 600
+                        font-size: 26px
+                        line-height: 31px
+                        +mobile
+                            font-size: 22px
+                    
+                    .box-p1
+                        font-family: $sourcesans
+                        font-weight: 400
+                        font-size: 16px
+                        line-height: 22px
+
+                    

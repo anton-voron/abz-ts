@@ -39,29 +39,28 @@ class Section3 extends Component {
         return arr.map((item, idx) => {
             const { img, title, text } = item
             return (
-                <div className="code-lang-list">
-                    <div className="box-1" key={idx}>
-                        <div className="img-wrapper">
-                            <img src={img} alt="code lang" className="mob-size" />
-                        </div>
-                        <div className="box-2">
-                            <h2 className="box-title">
-                                {title}
-                            </h2>
-                            <p className="box-p1">
-                                {text}
-                            </p>
-                        </div>
+                <div className="code-lang-item"
+                    key={idx}>
+                    <div className="img-wrapper">
+                        <img src={img} alt="code lang" className="mob-size" />
+                    </div>
+                    <div className="box-2">
+                        <h2 className="box-title">
+                            {title}
+                        </h2>
+                        <p className="box-p1">
+                            {text}
+                        </p>
                     </div>
                 </div>
             )
         })
     }
-    
+
     render() {
         const codeMap = this.displayElem(codeLang)
         return <>
-            <section className="section2">
+            <section className="section3">
                 <div className="container">
                     <div className="content-wrapper">
                         <h1 className="title">
