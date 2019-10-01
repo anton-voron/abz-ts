@@ -1,0 +1,56 @@
+@import "src/styles/vars.sass"
+
+.section2
+    margin: 0
+    padding-top: 140px
+    +tablet
+        padding-top: 120px
+    +mobile
+        padding-top: 70px
+    
+    .content-wrapper
+        display: flex
+        flex-direction: column
+        align-items: center
+        +mobile
+            text-align: center
+
+        .title
+            font-family: $overpas
+            font-weight: 600
+            font-size: 42px
+            line-height: 51px
+            margin-bottom: 40px        
+        
+        .row
+
+            .img-central
+                margin-bottom: 30px
+
+                .mob-size
+                    +tablet
+                        max-width: 216px
+                        height: auto
+                    
+
+            .section2-h3
+                font-family: $overpas
+                font-weight: 600
+                font-size: 26px
+                line-height: 31px
+                margin-bottom: 15px
+            
+            .section2-p1
+                font-family: $sourcesans
+                font-weight: 400
+                font-size: 16px
+                line-height: 22px
+            
+            .sing-up-link
+                color: $primary
+                border: none
+                background: transparent
+                font-family: $sourcesans
+                font-size: 22px
+                line-height: 60px
+                font-weight: 600
