@@ -2,6 +2,8 @@
 
 .main-header
     padding: 10px 0
+    +tablet
+        padding: 0 0
 
     .header-container
         padding: 0 20px
@@ -14,6 +16,10 @@
             font-size: 16px
             line-height: 20px
             color: #000000
+            +tablet
+                display: grid
+                grid-template-columns: 1fr 1fr
+                justify-content: space-between
 
             .box-1
                 flex-shrink: 0
@@ -22,7 +28,8 @@
             .navbar-toggler
                 display: none
                 +tablet
-                    display: block
+                    display: flex
+                    justify-content: flex-end
 
             .collapser
                 +tablet

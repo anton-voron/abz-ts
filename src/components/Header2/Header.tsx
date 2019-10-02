@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import './Header.sass'
 import { observer } from 'mobx-react'
 import Store from '../../store'
+import TabletHeader from './TabletHeader'
 
 interface Props {
     store: Store
@@ -71,6 +72,7 @@ class Header extends Component<Props>{
                         </div>
                     </div>
                 </div>
+                <TabletHeader store={this.props.store} />
             </header>
         </>
     }
