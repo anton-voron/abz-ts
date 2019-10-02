@@ -4,18 +4,19 @@
     margin-top: 120px
 
     .content-wrapper
+        width: 100%
         display: flex
         flex-direction: column
-        justify-content: center
-        align-items: center
 
         .title
+            align-self: center
             font-family: $overpas
             font-weight: 600
             font-size: 42px
             line-height: 51px
         
         .section5-p1
+            align-self: center
             font-family: $sourcesans
             font-weight: 400
             font-size: 18px
@@ -25,7 +26,6 @@
         .grid-wrapper
             display: grid
             grid-template-columns: repeat(3, 1fr)
-            grid-column-gap: 1em
             +tablet
                 text-align: center
                 grid-column-gap: 0
@@ -37,6 +37,7 @@
                     display: none
         
         .btn-show-more
+            align-self: center
             width: 290px
             font-family: $sourcesans
             font-size: 20px

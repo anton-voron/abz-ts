@@ -1,4 +1,4 @@
-import { observable, action, runInAction, toJS } from 'mobx'
+import { observable, action, runInAction, toJS, computed } from 'mobx'
 import RegistrationAPI from '../service/RegistrationAPI'
 
 
@@ -89,8 +89,8 @@ export default class Store {
     }
 
     @action
-    getUsers = async () => {
-        const usersMap = await this.service.getUsers()
+    getUsers = async (num: number = 6) => {
+        const usersMap = await this.service.getUsers(num)
         runInAction(() => {
             this.userList = [...usersMap]
         })
@@ -99,8 +99,7 @@ export default class Store {
     @action
     getUser = () => {
         const id = localStorage.getItem("user_id") || 180
-        const userList = toJS(this.userList)
-        const user = userList.find((user: PersonData) => {
+        const user = this.userList.find((user: PersonData) => {
             console.log(id)
             return user.id == id
         })

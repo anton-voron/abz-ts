@@ -1,26 +1,26 @@
 import React, { Component } from 'react'
 import './Header.sass'
 import Store from '../../store'
+import { observer } from 'mobx-react'
 
 interface Props {
     store: Store
 }
 
+@observer
 class Header extends Component<Props> {
 
     componentDidMount(){
         this.updatUser()
     }
 
-    updatUser = () => {
-        const res = this.props.store.getUser()
-        console.log(res)
+    updatUser = async () => {
+        await this.props.store.getUser()   
     }
 
     render() {
         const {
             email,
-            id,
             name,
             photo,
         } = this.props.store.currentUser

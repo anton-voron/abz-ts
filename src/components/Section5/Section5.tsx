@@ -15,6 +15,10 @@ interface Props {
 @observer
 class Section5 extends Component <Props> {
 
+    state= {
+        open: false
+    }
+
     componentDidMount() {
         this.props.store.getUsers()
     }
@@ -22,6 +26,15 @@ class Section5 extends Component <Props> {
     getUsers = () => {
         console.log("Here we go")
         this.props.store.getUsers()
+    }
+
+    noShowMore = () => {
+        this.setState({
+            open: !this.state.open
+        })
+        let numb
+        this.state.open ? numb = 6 : numb = 12
+        this.props.store.getUsers(numb)
     }
 
     showEmployee = (arr: PersonData[]) => {
@@ -34,7 +47,7 @@ class Section5 extends Component <Props> {
         const userMap = this.showEmployee(this.props.store.userList)
         return <>
             <section className="section5">
-                <div className="contaoner">
+                <div className="container">
                     <div className="content-wrapper">
                         <h2 className="title">Our cheerful users</h2>
                         <p className="section5-p1">Attention! Sorting users by registration date</p>
@@ -42,7 +55,7 @@ class Section5 extends Component <Props> {
                             {userMap}
                         </div>
                         <button className="btn-show-more"
-                        onClick={this.getUsers}>
+                            onClick={this.noShowMore}>
                             Show more
                         </button>
                     </div>

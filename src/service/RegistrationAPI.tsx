@@ -13,7 +13,7 @@ export interface IRegistrationAPI {
 export default class RegistrationAPI implements IRegistrationAPI{
     readonly _token: string = `https://frontend-test-assignment-api.abz.agency/api/v1/token`
     readonly _usersPost: string = `https://frontend-test-assignment-api.abz.agency/api/v1/users`
-    readonly _usersGet: string = `https://frontend-test-assignment-api.abz.agency/api/v1/users?page=1&count=6`
+    readonly _usersGet: string = `https://frontend-test-assignment-api.abz.agency/api/v1/users?page=1&count=`
     readonly _position: string = `https://frontend-test-assignment-api.abz.agency/api/v1/positions`
 
     getResource = async (url: string) => {
@@ -57,8 +57,8 @@ export default class RegistrationAPI implements IRegistrationAPI{
         })
     }
 
-    getUsers = async () => {
-        return this.getResource(this._usersGet)
+    getUsers = async (num: number = 6) => {
+        return this.getResource(`${this._usersGet}${num}`)
         .then(data => {
             if(data.success) {
                 console.log(data.users)
