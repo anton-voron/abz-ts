@@ -11,6 +11,16 @@ interface Props {
 @observer
 class Header extends Component<Props>{
 
+    state={
+        display: false
+    }
+
+    showSideheader = () => {
+        this.setState({
+            display: !this.state.display
+        })
+    }
+
     render() {
         const {
             email,
@@ -26,7 +36,7 @@ class Header extends Component<Props>{
                                 <img src={require('../../static/header/logo.svg')} width="137" height="32" alt="company logo" />
                             </a>
                         </div>
-                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <button className="navbar-toggler" type="button" onClick={this.showSideheader}>
                             <img src={require('../../static/header/line-menu.svg')} width="137" height="32" alt="company logo" />
                         </button>
                         <div className="collapser">
@@ -72,7 +82,7 @@ class Header extends Component<Props>{
                         </div>
                     </div>
                 </div>
-                <TabletHeader store={this.props.store} />
+                <TabletHeader store={this.props.store} display={this.state.display}/>
             </header>
         </>
     }

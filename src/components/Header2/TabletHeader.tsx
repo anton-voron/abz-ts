@@ -4,7 +4,8 @@ import { observer } from 'mobx-react'
 import Store from '../../store'
 
 interface Props {
-    store: Store
+    store: Store,
+    display: boolean
 }
 
 @observer
@@ -16,8 +17,12 @@ class TabletHeader extends Component<Props>{
             name,
             photo,
         } = this.props.store.currentUser
+
+        const { display } = this.props
+        let clasez: string
+        display ? clasez = `collapser2` : clasez = `hidden`
         return <>
-            <div className="collapser2">
+            <div className={clasez}>
                 <div className="box-2">
                     <ul className="nav-items">
                         <li className="item">
