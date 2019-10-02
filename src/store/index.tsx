@@ -1,13 +1,21 @@
-import { observable, action } from 'mobx'
+import { observable, action, runInAction } from 'mobx'
 import RegistrationAPI from '../service/RegistrationAPI'
 
-interface IForm {
+
+export interface IForm {
     [key: string]: string | number 
 
 }
 
-interface IHeders {
-    [key: string]: string | number
+export interface PersonData {
+    email: string
+    id: number
+    name: string
+    phone: string
+    photo: string
+    position: string
+    position_id: number
+    registration_timestamp: number
 }
 
 export default class Store {
@@ -23,6 +31,11 @@ export default class Store {
         photo: ''
 
     }
+
+    @observable
+    public userList: PersonData[] = [
+        
+    ]
 
     @action
     onFiledChange = (name: string, value: string): void => {
@@ -49,6 +62,14 @@ export default class Store {
         formData.append('photo', fileField.files[0]);
 
         this.service.postUser(formData)
+    }
+
+    @action
+    getUsers = async () => {
+        const usersMap = await this.service.getUsers()
+        runInAction(() => {
+            this.userList = [...usersMap]
+        })
     }
 
 }

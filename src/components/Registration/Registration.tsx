@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { observable, action, comparer, autorun, configure, computed } from 'mobx'
+import { configure } from 'mobx'
 import { observer } from 'mobx-react'
-import withService from '../HOC/withService'
 
 import Input from '../Input/Input'
 import './Registration.sass'
