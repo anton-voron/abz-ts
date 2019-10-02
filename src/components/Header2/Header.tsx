@@ -15,6 +15,18 @@ class Header extends Component<Props>{
         display: false
     }
 
+    componentDidMount() {
+        document.body.addEventListener('keydown', this.hideSideheader);
+    }
+
+    hideSideheader = (evt: any) => {
+        if(this.state.display){
+            if(evt.code === "Escape"){
+                this.showSideheader()
+            }
+        }
+    }
+
     showSideheader = () => {
         this.setState({
             display: !this.state.display
