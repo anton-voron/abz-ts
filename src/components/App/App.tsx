@@ -20,7 +20,7 @@ function App () {
 
     return(
         <main className="">
-            <Header />
+            <Header store={store}/>
             <Section1 />
             <Section2 />
             <Section3 />

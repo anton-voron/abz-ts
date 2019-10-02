@@ -1,9 +1,29 @@
 import React, { Component } from 'react'
 import './Header.sass'
+import Store from '../../store'
 
-class Header extends Component {
+interface Props {
+    store: Store
+}
+
+class Header extends Component<Props> {
+
+    componentDidMount(){
+        this.updatUser()
+    }
+
+    updatUser = () => {
+        const res = this.props.store.getUser()
+        console.log(res)
+    }
 
     render() {
+        const {
+            email,
+            id,
+            name,
+            photo,
+        } = this.props.store.currentUser
         return <>
             <header className="main-header">
                 <div className="container-fluid">
@@ -42,15 +62,15 @@ class Header extends Component {
                                     <li className="nav-item">
                                         <p className="user-data">
                                             <span className="login">
-                                                Superstar
-                                    </span> <br />
+                                                {name}
+                                            </span> <br />
                                             <span className="email">
-                                                superstar@gmail.com
-                                    </span>
+                                                {email}
+                                            </span>
                                         </p>
                                     </li>
                                     <li className="nav-item">
-                                        <img src={require('../../static/header/user-superstar-2x.jpg')} className="avatar" alt="user photo" />
+                                        <img src={photo} className="avatar" alt="user photo" />
                                     </li>
                                     <li className="nav-item">
                                         <a className="nav-link log-out" href="#">
@@ -62,6 +82,7 @@ class Header extends Component {
                         </div>
                     </nav>
                 </div>
+                <button onClick={this.updatUser}>UPdate User</button>
             </header>
         </>
     }

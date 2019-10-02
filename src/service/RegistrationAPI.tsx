@@ -5,7 +5,8 @@ export interface IRegistrationAPI {
     readonly _position: string;
     getResource(url: string): object;
     getToken(): Promise<any>;
-    postUser(data: any): void
+    postUser(data: any): void;
+    getPosition(): Promise<any>;
     
 }
 
@@ -41,15 +42,12 @@ export default class RegistrationAPI implements IRegistrationAPI{
             }
         })
         .then(response => {
-            if(!response.ok) {
-                throw new Error(`Could not fetch, recived ${response.status}`)
-            }
             return response.json()
         } )
         .then(data => {
-            console.log(data)
             if(data.success) {
-                //prosess
+                console.log(data)
+                localStorage.setItem('user_id', data.user_id)
             } else {
                 throw new Error(`Error bacause of ${data}`)
             }
@@ -63,12 +61,20 @@ export default class RegistrationAPI implements IRegistrationAPI{
         return this.getResource(this._usersGet)
         .then(data => {
             if(data.success) {
+                console.log(data.users)
                 return data.users
             } else {
                 throw new Error(`Invalid request`)
             }
         })
         .catch(error => console.log(error))
-        
+    }
+
+    getPosition = async () => {
+        return this.getResource(this._position)
+        .then(data => {
+            return data.positions
+        })
+        .catch(error => {console.log(error)})
     }
 }

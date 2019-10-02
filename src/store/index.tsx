@@ -1,4 +1,4 @@
-import { observable, action, runInAction } from 'mobx'
+import { observable, action, runInAction, toJS } from 'mobx'
 import RegistrationAPI from '../service/RegistrationAPI'
 
 
@@ -18,6 +18,11 @@ export interface PersonData {
     registration_timestamp: number
 }
 
+export interface IPositions {
+    id: number,
+    name: string
+}
+
 export default class Store {
 
     protected service = new RegistrationAPI()
@@ -33,24 +38,39 @@ export default class Store {
     }
 
     @observable
-    public userList: PersonData[] = [
-        
-    ]
+    public userList: PersonData[] = []
+
+    @observable
+    public currentUser: PersonData = {
+        id: 37,
+        name: "Lisa",
+        email: "lisa.medina@example.com",
+        phone: "+380564753087",
+        position: "Security",
+        position_id: 3,
+        registration_timestamp: 1537639019,
+        photo: "https://frontend-test-assignment-api.abz.agency/images/users/5d94a90233368185.jpg"
+    }
+
+    @observable
+    public positions: IPositions[] = []
+
+    constructor(){
+
+    }
 
     @action
     onFiledChange = (name: string, value: string): void => {
-        console.log(value)
         this.data[name] = value
     }
 
     @action
     onSelectChange = (value: string): void => {
-        console.log(value)
         this.data.position_id = value
     }
 
+    @action
     postUser = async () => {
-        const token = await this.service.getToken()
         const formData = new FormData();
         const fileField: any = document.querySelector('input[type="file"]')
 
@@ -61,7 +81,11 @@ export default class Store {
         formData.append('phone', `${this.data.phone}`);
         formData.append('photo', fileField.files[0]);
 
-        this.service.postUser(formData)
+        await this.service.postUser(formData)
+        const usersMap = await this.service.getUsers()
+        runInAction(() => {
+            this.userList = [...usersMap]
+        })
     }
 
     @action
@@ -69,6 +93,31 @@ export default class Store {
         const usersMap = await this.service.getUsers()
         runInAction(() => {
             this.userList = [...usersMap]
+        })
+    }
+
+    @action
+    getUser = () => {
+        const id = localStorage.getItem("user_id") || 180
+        const userList = toJS(this.userList)
+        const user = userList.find((user: PersonData) => {
+            console.log(id)
+            return user.id == id
+        })
+        console.log(user)
+        if(user) {
+            this.currentUser = user
+            
+        } else {
+            console.log(`there is no user with id: ${id}`)
+        }
+    }
+
+    @action
+    getPosition = async () => {
+        const positions = await this.service.getPosition()
+        runInAction(() => {
+            this.positions = [...positions]
         })
     }
 

@@ -3,30 +3,20 @@ import { configure } from 'mobx'
 import { observer } from 'mobx-react'
 
 import Input from '../Input/Input'
+import Selector from '../Selector/Selector'
 import './Registration.sass'
-import  Store  from '../../store'
+import Store from '../../store'
 
 configure({ enforceActions: 'observed' });
 
 
-
-interface IHeders {
-    [key: string]: string | number
-}
-
 interface Props {
     store: Store
-  }
+}
 
 @observer
-class Registration extends Component <Props> {
+class Registration extends Component<Props> {
 
-
-    handleSelect = (evt: any): void => {
-        const { onSelectChange } = this.props.store
-        const value: string = evt.target.value
-        onSelectChange(value)
-    }
 
     handleSubmit = async (evt: any) => {
         evt.preventDefault()
@@ -35,7 +25,6 @@ class Registration extends Component <Props> {
 
     render() {
         const { store } = this.props
-        const { data } = store
         return <>
             <section className="registration">
                 <div className="container">
@@ -58,19 +47,12 @@ class Registration extends Component <Props> {
                             name="phone"
                             placeholder="+38 ( __ ) ___ __ __" />
                         <div className="box">
-                            <select value={data.position_id} onChange={this.handleSelect} className="selector">
-                                <option value="0">Lead designer</option>
-                                <option value="1">QA</option>
-                                <option value="2">SMM</option>
-                                <option value="3">Frontend developer</option>
-                                <option value="4">Backend developer</option>
-                                <option value="5">Leading specialist of Control Department</option>
-                            </select>
+                            <Selector store={store} />
                             <div>
                                 <input type="file" placeholder="Upload your photo" className="upload-photo" />
                             </div>
                         </div>
-                        <input type="submit" value="Sign Up"/>
+                        <input type="submit" value="Sign Up" />
                     </form>
                 </div>
             </section>
