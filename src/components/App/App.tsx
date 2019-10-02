@@ -11,7 +11,9 @@ import Section4 from '../Section4/Section4'
 import Section5 from '../Section5/Section5'
 import Registration from '../Registration/Registration'
 import Footer from '../Footer/Footer'
+import  Store  from '../../store'
 
+const store= new Store()
 
 
 function App () {
@@ -24,7 +26,7 @@ function App () {
             <Section3 />
             <Section4 />
             <Section5 />
-            <Registration />
+            <Registration store={store}/>
             <Footer />
         </main>
     )

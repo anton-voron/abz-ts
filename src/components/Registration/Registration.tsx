@@ -1,108 +1,41 @@
 import React, { Component } from 'react'
 import { observable, action, comparer, autorun, configure, computed } from 'mobx'
 import { observer } from 'mobx-react'
+import withService from '../HOC/withService'
 
 import Input from '../Input/Input'
 import './Registration.sass'
+import  Store  from '../../store'
 
 configure({ enforceActions: 'observed' });
 
-interface IForm {
-    [key: string]: string | number 
 
-}
 
 interface IHeders {
     [key: string]: string | number
 }
 
-class FormSend {
-
-    @observable
-    public data: IForm = {
-        name: '',
-        email: '',
-        phone : '',
-        position_id: 0,
-        photo: ''
-
-    }
-
-    @action
-    onFiledChange = (name: string, value: string): void => {
-        this.data[name] = value
-    }
-
-    @action
-    onSelectChange = (value: string): void => {
-        console.log(value)
-        this.data.position_id = value
-    }
-
-
-}
-
-const store = new FormSend()
+interface Props {
+    store: Store
+  }
 
 @observer
-class Registration extends Component {
+class Registration extends Component <Props> {
+
 
     handleSelect = (evt: any): void => {
-        const { onSelectChange } = store
+        const { onSelectChange } = this.props.store
         const value: string = evt.target.value
         onSelectChange(value)
     }
 
-    getToken = async () => {
-        let token: string
-        const response = await fetch('https://frontend-test-assignment-api.abz.agency/api/v1/token')
-        const data = await response.json()
-        if(data) {
-            console.log(data.token)
-            token = data.token
-        } else {
-            throw new Error
-        }
-        return token
-    }
-
     handleSubmit = async (evt: any) => {
         evt.preventDefault()
-        const postData = document.getElementById('postData')
-        const token = await this.getToken()
-
-        const formData = new FormData();
-
-        const fileField: any = document.querySelector('input[type="file"]')
-        console.log(fileField.files[0]);
-        formData.append('position_id', `${store.data.position_id}`);
-        formData.append('name', `${store.data.name}`);
-        formData.append('email', `${store.data.email}`);
-        formData.append('phone', `${store.data.phone}`);
-        formData.append('photo', fileField.files[0]);
-
-        fetch('https://frontend-test-assignment-api.abz.agency/api/v1/users', {
-             method: 'POST',
-             body: formData,
-             headers: {
-                'Token': token
-              },
-        })
-        .then(response => {
-            return response.json()
-        })
-        .then(result => {
-            console.log(result)
-        })
-        .catch(error => {
-            console.log(`FUCK we got an error ${error}`)
-        }) 
-        
-        
-        
+        this.props.store.postUser()
     }
 
     render() {
+        const { store } = this.props
         const { data } = store
         return <>
             <section className="registration">
