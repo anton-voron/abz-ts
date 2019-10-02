@@ -8,7 +8,7 @@ class Section2 extends Component {
 
     render() {
         return <>
-            <section className="section2">
+            <section className="section2" id="about-me">
                 <div className="container">
                     <div className="content-wrapper">
                         <h2 className="title">
@@ -35,7 +35,9 @@ class Section2 extends Component {
                                     initiatives to help improve user-experience on the web.
                                 </p>
                                 <button className="sing-up-link">
-                                    Sign Up
+                                    <a href="#signup" className="in-link">
+                                        Sign Up
+                                    </a>
                                 </button>
                             </div>
                         </div>

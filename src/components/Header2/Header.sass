@@ -1,0 +1,63 @@
+@import "src/styles/vars.sass"
+
+.main-header
+    padding: 10px 0
+
+    .header-container
+        padding: 0 20px
+
+        .flex-wrapper
+            display: flex
+            flex-direction: row
+            justify-content: space-between
+            font-family: $sourcesans
+            font-size: 16px
+            line-height: 20px
+            color: #000000
+
+            .box-1
+                flex-shrink: 0
+                flex-grow: 0
+
+            .navbar-toggler
+                display: none
+                +tablet
+                    display: block
+
+            .collapser
+                +tablet
+                    display: none
+
+                .box-2
+                    display: flex
+                    align-items: center
+
+                    .nav-items
+                        list-style: none
+                        display: flex
+                        justify-content: space-between
+                        align-items: center
+                        margin: 0
+
+                        .item
+                            margin-right: 10px
+
+                            .link
+                                color: #000000
+                            
+                            .user-data
+                                display: block
+                                text-align: right
+
+                                .login
+
+                            .avatar
+                                width: 48px
+                                height: 48px
+                                border-radius: 50%
+                            
+                            .log-out
+                                +tablet
+                                    display: none
+
+                        

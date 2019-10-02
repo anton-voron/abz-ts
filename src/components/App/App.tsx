@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import "../../styles/universal.sass"
 
 import Header from '../Header/Header'
+import Header2 from '../Header2/Header'
 import Section1 from '../Section1/Section1'
 import Section2 from '../Section2/Section2'
 import Section3 from '../Section3/Section3'
@@ -20,7 +21,7 @@ function App () {
 
     return(
         <main className="">
-            <Header store={store}/>
+            <Header2 store={store}/>
             <Section1 />
             <Section2 />
             <Section3 />

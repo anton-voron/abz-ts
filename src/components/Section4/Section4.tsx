@@ -8,7 +8,7 @@ class Section4 extends Component {
 
     render() {
         return <>
-            <section className="section4">
+            <section className="section4" id="requirements">
                 <div className="container">
                     <div className="content-wrapper">
                         <h2 className="title">

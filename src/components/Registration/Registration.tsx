@@ -26,7 +26,7 @@ class Registration extends Component<Props> {
     render() {
         const { store } = this.props
         return <>
-            <section className="registration">
+            <section className="registration" id="signup">
                 <div className="container">
                     <h1 className="title">Register to get a work</h1>
                     <p className="registration-p1">

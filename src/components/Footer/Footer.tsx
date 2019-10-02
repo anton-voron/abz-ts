@@ -14,19 +14,19 @@ function Footer() {
                         </div>
                         <ul className="link-list">
                             <li className="link-item">
-                                <a href="#">About me</a>
+                                <a href="#about-me">About me</a>
                             </li>
                             <li className="link-item">
-                                <a href="#">Relationships</a>
+                                <a href="#relationships">Relationships</a>
                             </li>
                             <li className="link-item">
-                                <a href="#">Requirments</a>
+                                <a href="#requirements">Requirments</a>
                             </li>
                             <li className="link-item">
-                                <a href="#">Users</a>
+                                <a href="#user">Users</a>
                             </li>
                             <li className="link-item">
-                                <a href="#">Sing Up</a>
+                                <a href="#signup">Sing Up</a>
                             </li>
                         </ul>
                     </div>

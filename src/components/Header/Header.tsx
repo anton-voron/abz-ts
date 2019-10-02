@@ -26,7 +26,7 @@ class Header extends Component<Props> {
         } = this.props.store.currentUser
         return <>
             <header className="main-header">
-                <div className="container-fluid">
+                <div className="container">
                     <nav className="navbar navbar-expand-lg nav-self">
                         <a className="navbar-brand" href="#">
                             <img src={require('../../static/header/logo.svg')} width="137" height="32" alt="company logo" />

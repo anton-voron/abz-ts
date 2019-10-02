@@ -60,7 +60,7 @@ class Section3 extends Component {
     render() {
         const codeMap = this.displayElem(codeLang)
         return <>
-            <section className="section3">
+            <section className="section3" id="relationships">
                 <div className="container">
                     <div className="content-wrapper">
                         <h1 className="title">

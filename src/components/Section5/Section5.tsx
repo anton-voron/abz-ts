@@ -46,7 +46,7 @@ class Section5 extends Component <Props> {
     render() {
         const userMap = this.showEmployee(this.props.store.userList)
         return <>
-            <section className="section5">
+            <section className="section5" id="user">
                 <div className="container">
                     <div className="content-wrapper">
                         <h2 className="title">Our cheerful users</h2>

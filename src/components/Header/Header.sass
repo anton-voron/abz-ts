@@ -1,7 +1,13 @@
 @import "src/styles/vars.sass"
 
 .main-header
+    position: fixed
     width: 100%
+
+    .container
+        +tablet
+            display: block
+            padding: 0px
 
     .navbar
         background-color: #ffffff
@@ -14,6 +20,12 @@
             display: none
             +tablet
                 display: block
+        
+        .navbar-collapse
+            background-color: #ffffff
+            flex-grow: 1
+            flex-basis: 110%
+            height: 600px
 
         .nav-wrapper
             width: 100%

@@ -19,9 +19,9 @@ class Section1 extends Component {
                             that meets minimum requirements. We look forward to your submission. Good luck!
                         </p>
                         <button className="sign-up-btn">
-                            <div className="in-button">
+                            <a href="#signup" className="in-button">
                                 Sign Up
-                            </div>
+                            </a>
                         </button>
                     </div>
                 </div>
