@@ -28,7 +28,7 @@ class Selector extends Component<Props>{
         return arr.map(item => {
             const { id, name } = item
             return<>
-                <option value={id} key={id}>
+                <option value={id} key={id} className="options-bg">
                     {name}
                 </option>
             </>

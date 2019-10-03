@@ -46,9 +46,10 @@ export default class RegistrationAPI implements IRegistrationAPI{
         } )
         .then(data => {
             if(data.success) {
-                console.log(data)
+                alert("You have successfully passed the registration")
                 localStorage.setItem('user_id', data.user_id)
             } else {
+                alert("Failed registration, please enter valid data")
                 throw new Error(`Error bacause of ${data}`)
             }
         })
