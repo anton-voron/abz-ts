@@ -3,12 +3,12 @@ import RegistrationAPI from '../service/RegistrationAPI'
 
 
 export interface IForm {
-    [key: string]: string | number 
+    [key: string]: string | number
 
 }
 
 export interface IInputState {
-    [key: string]: boolean 
+    [key: string]: boolean
 }
 
 export interface IRegexp {
@@ -39,7 +39,7 @@ export default class Store {
     public data: IForm = {
         name: '',
         email: '',
-        phone : '',
+        phone: '',
         position_id: 0,
         photo: ''
 
@@ -72,7 +72,7 @@ export default class Store {
     @observable
     public positions: IPositions[] = []
 
-    constructor(){
+    constructor() {
 
     }
 
@@ -93,15 +93,15 @@ export default class Store {
             email: /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
             phone: /^\+380\d{3}\d{2}\d{2}\d{2}$/
         }
-        if(name === "phone") {
+        if (name === "phone") {
             value = value.replace(/\s/g, '')
         }
 
-         if(regexp[name].test(value)) {
-             this.inputState[name] = true
-         } else {
-             this.inputState[name] = false
-         }
+        if (regexp[name].test(value)) {
+            this.inputState[name] = true
+        } else {
+            this.inputState[name] = false
+        }
     }
 
 
@@ -133,19 +133,21 @@ export default class Store {
     }
 
     @action
-    getUser = () => {
+    getUser = async () => {
+        await this.getUsers()
         const id = localStorage.getItem("user_id") || 180
         const user = this.userList.find((user: PersonData) => {
             console.log(id)
             return user.id == id
         })
-        console.log(user)
-        if(user) {
-            this.currentUser = user
-            
-        } else {
-            console.log(`there is no user with id: ${id}`)
-        }
+        runInAction(() => {
+            if (user) {
+                this.currentUser = user
+
+            } else {
+                console.log(`there is no user with id: ${id}`)
+            }
+        })
     }
 
     @action

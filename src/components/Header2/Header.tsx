@@ -17,6 +17,7 @@ class Header extends Component<Props>{
 
     componentDidMount() {
         document.body.addEventListener('keydown', this.hideSideheader);
+        this.props.store.getUser()
     }
 
     hideSideheader = (evt: any) => {
