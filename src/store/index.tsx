@@ -93,9 +93,6 @@ export default class Store {
             email: /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
             phone: /^\+380\d{3}\d{2}\d{2}\d{2}$/
         }
-        if (name === "phone") {
-            value = value.replace(/\s/g, '')
-        }
 
         if (regexp[name].test(value)) {
             this.inputState[name] = true

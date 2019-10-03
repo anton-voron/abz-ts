@@ -9,7 +9,10 @@ class Intut extends Component<{store: any, name: string, placeholder: string}> {
     onChange = (evt: any): void => {
         const { onFiledChange, textValidator} = this.props.store
         const name: string = evt.target.name
-        const value: string = evt.target.value
+        let value: string = evt.target.value
+        if (name === "phone") {
+            value = value.replace(/\s/g, '')
+        }
         onFiledChange(name, value)
         textValidator(name, value)
         

@@ -20,6 +20,12 @@ class Header extends Component<Props>{
         this.props.store.getUser()
     }
 
+    componentDidUpdate(prevProps: Props) {
+        if (this.props.store.currentUser !== prevProps.store.currentUser) {
+            this.props.store.getUser()
+        }
+      }
+
     hideSideheader = (evt: any) => {
         if(this.state.display){
             if(evt.code === "Escape"){
