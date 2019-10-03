@@ -66,7 +66,7 @@ export default class Store {
         position: "Security",
         position_id: 3,
         registration_timestamp: 1537639019,
-        photo: "https://frontend-test-assignment-api.abz.agency/images/users/5d94a90233368185.jpg"
+        photo: "https:\/\/frontend-test-assignment-api.abz.agency\/images\/users\/5d7f85643aa3b1.jpeg"
     }
 
     @observable
