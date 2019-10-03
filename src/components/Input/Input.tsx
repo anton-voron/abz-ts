@@ -9,7 +9,7 @@ class Intut extends Component<{store: any, name: string, placeholder: string}> {
     onChange = (evt: any): void => {
         const { onFiledChange, textValidator} = this.props.store
         const name: string = evt.target.name
-        const value: string = evt.target.value 
+        const value: string = evt.target.value
         onFiledChange(name, value)
         textValidator(name, value)
         
