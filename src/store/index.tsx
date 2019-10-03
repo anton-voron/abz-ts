@@ -119,6 +119,7 @@ export default class Store {
         runInAction(() => {
             this.userList = [...usersMap]
         })
+        this.getUser()
     }
 
     @action
