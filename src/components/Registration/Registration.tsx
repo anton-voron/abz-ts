@@ -33,26 +33,28 @@ class Registration extends Component<Props> {
                         Attention! After successful registration and alert,
                         update the list of users in the block from the top
                     </p>
-                    <form className="form-wrapper" onSubmit={this.handleSubmit} id="postData">
-                        <Input
-                            store={store}
-                            name="name"
-                            placeholder="Your name" />
-                        <Input
-                            store={store}
-                            name="email"
-                            placeholder="Your email" />
-                        <Input
-                            store={store}
-                            name="phone"
-                            placeholder="+38 ( __ ) ___ __ __" />
-                        <div className="box">
-                            <Selector store={store} />
-                            <div>
-                                <input type="file" placeholder="Upload your photo" className="upload-photo" />
+                    <form className="form-flex" onSubmit={this.handleSubmit} id="postData">
+                        <div className="form-wrapper">
+                            <Input
+                                store={store}
+                                name="name"
+                                placeholder="Your name" />
+                            <Input
+                                store={store}
+                                name="email"
+                                placeholder="Your email" />
+                            <Input
+                                store={store}
+                                name="phone"
+                                placeholder="+38 ( __ ) ___ __ __" />
+                            <div className="box">
+                                <Selector store={store} />
+                                <div>
+                                    <input type="file" placeholder="Upload your photo" className="upload-photo" />
+                                </div>
                             </div>
                         </div>
-                        <input type="submit" value="Sign Up" />
+                        <input type="submit" value="Sign Up" className="sumbit" />
                     </form>
                 </div>
             </section>

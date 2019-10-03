@@ -3,24 +3,34 @@
 .fieldset-wrapper
     border: 1px solid #8d8c8c
     border-radius: 4px
-    max-width: 220px
+    width: 220px
     height: 56px
     display: flex
     flex-direction: column
     justify-content: center
     align-items: center
     padding: 0 15px
+    +tablet
+        width: 100%
+    +mobile
+        margin: 0 auto
+        width: 290px
 
 .fieldset-wrapper-error
     border: 1px solid red
     border-radius: 4px
-    max-width: 220px
+    width: 220px
     height: 56px
     display: flex
     flex-direction: column
     justify-content: center
     align-items: center
     padding: 0 15px
+    +tablet
+        width: 100%
+    +mobile
+        margin: 0 auto
+        width: 290px
 
 .fieldset-name
     display: block

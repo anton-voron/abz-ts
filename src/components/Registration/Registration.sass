@@ -18,36 +18,55 @@
         text-align: center
         margin-bottom: 45px
     
-    .form-wrapper
-        display: grid
-        grid-template-columns: repeat(3, 1fr)
-        grid-column-gap: 30px
-        grid-row-gap: 40px
-        justify-content: space-between
-        align-items: center
+    .form-flex
+        display: flex
+        flex-direction: column
+    
+        .form-wrapper
+            display: grid
+            grid-template-columns: repeat(3, 1fr)
+            grid-column-gap: 30px
+            grid-row-gap: 40px
+            justify-content: space-between
+            align-items: center
+            +mobile
+                grid-template-columns: 1fr
+                
 
-        .box
-            grid-column-start: 1
-            grid-column-end: 5
-            grid-row-start: 2
-            grid-row-end: 2
-            display: flex
-            flex-direction: row
-            justify-content: space-around
+            .box
+                grid-column-start: 1
+                grid-column-end: 5
+                grid-row-start: 2
+                grid-row-end: 2
+                display: flex
+                flex-direction: row
+                justify-content: space-around
+                +mobile
+                    grid-column-start: 1
+                    grid-column-end: 1
+                    grid-row-start: 4
+                    grid-row-end: 4
+                    flex-direction: column
+                
+                .upload-photo
+                    background-color: transparent
+                    padding: 15px
+                    font-family: $sourcesans
+                    border: 1px solid #8d8c8c
+                    font-size: 16px 
+                    border-radius: 4px
+                    color: #8d8c8c
+                    width: 100%
+                    +mobile
+                        width: 290px
 
-            .selector
-                padding: 15px
-                font-family: $sourcesans
-                font-size: 16px 
-                border-radius: 4px
-                width: 450px
-            
-            .upload-photo
-                background-color: transparent
-                padding: 15px
-                font-family: $sourcesans
-                border: 1px solid #8d8c8c
-                font-size: 16px 
-                border-radius: 4px
-                color: #8d8c8c
-                width: 450px
+
+        .sumbit
+            width: 290px
+            background-color: #d7d7d7
+            border: 1px solid #d7d7d7
+            font-size: 20px
+            font-weight: 600
+            font-family: $sourcesans
+            color: #8d8c8c
+            margin: 0 auto
