@@ -7,6 +7,14 @@ export interface IForm {
 
 }
 
+export interface IInputState {
+    [key: string]: boolean 
+}
+
+export interface IRegexp {
+    [key: string]: RegExp
+}
+
 export interface PersonData {
     email: string
     id: number
@@ -35,6 +43,15 @@ export default class Store {
         position_id: 0,
         photo: ''
 
+    }
+
+    @observable
+    public inputState: IInputState = {
+        name: true,
+        email: true,
+        phone: true,
+        position_id: true,
+        photo: true
     }
 
     @observable
@@ -68,6 +85,21 @@ export default class Store {
     onSelectChange = (value: string): void => {
         this.data.position_id = value
     }
+
+    @action
+    textValidator = (name: string, value: string): void => {
+        const regexp: IRegexp = {
+            name: /(^[A-Za-z]{4,})$/,
+            email: /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/,
+            phone: /^\+380\d{3}\d{2}\d{2}\d{2}$/
+        }
+         if(regexp[name].test(value)) {
+             this.inputState[name] = true
+         } else {
+             this.inputState[name] = false
+         }
+    }
+
 
     @action
     postUser = async () => {
